@@ -9,9 +9,10 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var oc= require('./routes/openshift');
+var password = process.env.ADMIN_PASSWORD;
 
 console.log('Loggin in to OpenShift. Please wait');
-exec('oc login -u admin -p admin', function(error, out, err){
+exec('oc login -u admin -p ' + password, function(error, out, err){
   console.log(out);
 });
 var app = express();
